@@ -2,41 +2,40 @@
 session_start();
 include("../config/db.php");
 
-// Cek apakah admin
+
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
     die("Akses ditolak!");
 }
 
-// Proses simpan pembelian
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $is_new = isset($_POST['is_new']) ? true : false;
     $jumlah = $_POST['jumlah'];
     $harga = $_POST['harga'];
 
     if ($is_new) {
-        // Tambah produk baru
+        
         $nama_produk = $_POST['nama_produk'];
         $harga_jual = $_POST['harga_jual'];
 
         $conn->query("INSERT INTO produk (nama_produk, harga, stok) VALUES ('$nama_produk', '$harga_jual', 0)");
         $produk_id = $conn->insert_id;
     } else {
-        // Pakai produk lama
+       
         $produk_id = $_POST['produk_id'];
     }
 
-    // Hitung total harga beli
+   
     $total = $jumlah * $harga;
 
-    // Insert ke tabel pembelian
+   
     $conn->query("INSERT INTO pembelian (user_id, total_harga) VALUES ('".$_SESSION['user_id']."', '$total')");
     $pembelian_id = $conn->insert_id;
 
-    // Insert detail pembelian
     $conn->query("INSERT INTO detail_pembelian (pembelian_id, produk_id, jumlah, harga) 
                   VALUES ('$pembelian_id','$produk_id','$jumlah','$harga')");
 
-    // Update stok produk
+  
     $conn->query("UPDATE produk SET stok = stok + $jumlah WHERE produk_id = '$produk_id'");
 
     echo "<p style='color:green'>Pembelian berhasil dicatat!</p>";

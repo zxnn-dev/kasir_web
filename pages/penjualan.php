@@ -7,18 +7,15 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-// Jika transaksi disimpan
 if (isset($_POST['checkout'])) {
     $user_id = $_SESSION['user_id'];
     $tanggal = date("Y-m-d H:i:s");
 
-    // Insert ke tabel penjualan
     $conn->query("INSERT INTO penjualan (user_id, tanggal, total_harga) VALUES ('$user_id','$tanggal',0)");
     $penjualan_id = $conn->insert_id;
 
     $total = 0;
 
-    // Loop item belanjaan
     foreach ($_POST['produk_id'] as $key => $produk_id) {
         $jumlah = $_POST['jumlah'][$key];
         if ($jumlah > 0) {
@@ -28,26 +25,37 @@ if (isset($_POST['checkout'])) {
             $subtotal = $produk['harga'] * $jumlah;
             $total += $subtotal;
 
-            // Simpan ke detail penjualan
             $conn->query("INSERT INTO detail_penjualan (penjualan_id, produk_id, jumlah, subtotal) 
                           VALUES ('$penjualan_id','$produk_id','$jumlah','$subtotal')");
 
-            // Update stok
             $conn->query("UPDATE produk SET stok = stok - $jumlah WHERE produk_id='$produk_id'");
         }
     }
 
-    // Update total transaksi
     $conn->query("UPDATE penjualan SET total_harga='$total' WHERE penjualan_id='$penjualan_id'");
 
-    // Redirect ke halaman struk
-    header("Location: struk.php?id=$penjualan_id");
+    if (!empty($_POST['member_id'])) {
+        $member_id = $_POST['member_id'];
+        $poin = floor($total / 10000);
+        if ($poin > 0) {
+            $conn->query("UPDATE users SET poin = poin + $poin WHERE user_id='$member_id'");
+        }
+        header("Location: struk.php?id=$penjualan_id&member_id=$member_id");
+    } else {
+        header("Location: struk.php?id=$penjualan_id");
+    }
     exit;
 }
 ?>
 
 <h2>Transaksi Penjualan</h2>
 <form method="POST">
+    <label for="member_id">ID Member (opsional):</label>
+    
+    <input type="text" name="member_id" id="member_id" placeholder="Masukkan ID Member">
+    <br><br>
+   <a href="tambah_member.php">belum punya member?</a>
+    <br><br>
     <table border="1" cellpadding="5">
         <tr>
             <th>Produk</th>

@@ -7,7 +7,7 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-// Tambah produk
+
 if (isset($_POST['tambah'])) {
     $nama = $_POST['nama'];
     $harga = $_POST['harga'];

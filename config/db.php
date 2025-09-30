@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "kasir_db";
+$user = "root";    // default user XAMPP
+$pass = "";        // default password XAMPP biasanya kosong
+$db   = "kasir_db"; // sesuaikan dengan nama database kamu
 
 $conn = new mysqli($host, $user, $pass, $db);
 

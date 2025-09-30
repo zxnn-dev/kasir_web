@@ -2,16 +2,30 @@
 session_start();
 include("../config/db.php");
 
-// Cek apakah admin
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
     die("Akses ditolak!");
 }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Laporan Transaksi</title>
+    <style>
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
 
 <h2>Laporan Transaksi</h2>
 <p>Halo, <?= $_SESSION['username']; ?> (<?= $_SESSION['role']; ?>)</p>
 
-<!-- 🔍 Form Pencarian -->
+<button onclick="window.print()">🖨 Cetak Laporan</button>
+<br><br>
+
 <form method="GET">
     <label>Cari Detail Transaksi (Masukkan ID Penjualan atau Pembelian):</label><br>
     <input type="number" name="id" required>
@@ -131,4 +145,4 @@ if (isset($_GET['id']) && isset($_GET['tipe'])) {
 </table>
 
 <br>
-<a href="dashboard.php">⬅️ Kembali ke Dashboard</a>
+<a href="dashboard.php" class="no-print">⬅️ Kembali ke Dashboard</a>
