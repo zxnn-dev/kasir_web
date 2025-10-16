@@ -15,20 +15,14 @@ if (!isset($_SESSION['user_id'])) {
      <link rel="stylesheet" href="../assets/style.css">
     <title>Daftar Member</title>
     <style>
-        table {
-            border-collapse: collapse;
-            width: 80%;
-        }
-        table, th, td {
-            border: 1px solid black;
-            padding: 8px;
-        }
-        th {
-            background: #eee;
-        }
+       
     </style>
 </head>
 <body>
+    
+<div class="navbar">
+  <h1>Aplikasi Kasir</h1>
+</div>
 
 <h2>📋 Daftar Member</h2>
 <table>
@@ -58,7 +52,9 @@ if (!isset($_SESSION['user_id'])) {
 </table>
 
 <br>
-<a href="dashboard.php">⬅️ Kembali ke Dashboard</a>
+ <div class="button-group">
+      <a href="dashboard.php" class="btn secondary">⬅️ Kembali ke Dashboard</a>
+  </div>
 
 </body>
 </html>

@@ -19,6 +19,9 @@ if (!isset($_SESSION['user_id'])) {
 <div class="navbar">
   <h1>Aplikasi Kasir</h1>
   <div>
+    
+    <a href="list_member.php">List Member</a>
+
     <a href="transaksi.php">Laporan</a>
     <a href="produk.php">Produk</a>
     <a href="penjualan.php">Pembelian</a>

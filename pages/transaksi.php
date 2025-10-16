@@ -125,7 +125,7 @@ if (!empty($_GET['detail_id']) && isset($_GET['tipe'])) {
     echo "<div class='print-area'>"; // area yang dicetak
 
     echo "<h3>📦 Transaksi Penjualan (Barang Keluar)</h3>";
-    echo "<p>Kasir: " . $_SESSION['username'] . "</p>";
+    echo "<h4>Kasir: " . $_SESSION['username'] . "</h4>";
     echo "<table border='1' cellpadding='5'>
             <tr>
                 <th>ID Penjualan</th>
@@ -146,7 +146,7 @@ if (!empty($_GET['detail_id']) && isset($_GET['tipe'])) {
     echo "</table>";
 
     echo "<h3>📥 Transaksi Pembelian (Barang Masuk)</h3>";
-    echo "<p>kasir: " . $_SESSION['username'] . "</p>";
+    echo "<h4>kasir: " . $_SESSION['username'] . "</h4>";
     echo "<table border='1' cellpadding='5'>
             <tr>
                 <th>ID Pembelian</th>
