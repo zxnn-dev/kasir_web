@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 include("../config/db.php");
@@ -40,18 +39,23 @@ if (isset($_POST['simpan'])) {
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>Buat ID Member</title>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 20px; }
-        form { width: 400px; margin: auto; }
-        label { display: block; margin-top: 10px; }
-        input, textarea { width: 100%; padding: 8px; margin-top: 5px; }
-        button { margin-top: 15px; padding: 10px 15px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buat ID Member</title>
+  <link rel="stylesheet" href="../assets/style.css">  
+  <style>
+  </style>
 </head>
 <body>
+
+  <!-- Navbar seperti halaman lain -->
+  <div class="navbar">
+    <h1>Aplikasi Kasir</h1>
+  </div>
+
+  <div class="content">
     <h2>Buat ID Member Baru</h2>
     <form method="post">
         <label>ID Member</label>
@@ -70,13 +74,16 @@ if (isset($_POST['simpan'])) {
         <input type="email" name="email" required>
 
         <label>Alamat</label>
-        <textarea name="alamat" required></textarea>
+        <input name="alamat" required></input>
 
         <button type="submit" name="simpan">Simpan</button>
     </form>
-    <br>
-     <a href="list_member.php">list member</a>
-    <br><br>
-    <a href="dashboard.php">⬅️ Kembali ke Dashboard</a>
+
+    <div class="button-group">
+    
+        <a href="dashboard.php" class="btn secondary">⬅️ Kembali ke Dashboard</a>
+    </div>
+  </div>
+
 </body>
 </html>

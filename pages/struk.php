@@ -32,55 +32,89 @@ if ($member_id) {
     $conn->query("UPDATE members SET poin='$poin_sekarang' WHERE member_id='$member_id'");
 }
 ?>
+
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Struk Pembelian</title>
+    <link rel="stylesheet" href="../assets/style.css">
     <style>
+        
+
+        /* Mode Cetak */
         @media print {
             .no-print {
                 display: none !important;
+            }
+
+            body {
+                background: white;
+                box-shadow: none;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Navbar seperti halaman lain -->
+    <div class="navbar">
+        <h1>Aplikasi Kasir</h1>
+    </div>
 
-<h2>Struk Pembelian</h2>
-<p>No Transaksi: <?= $penjualan['penjualan_id']; ?></p>
-<p>Tanggal: <?= $penjualan['tanggal']; ?></p>
-<p>Kasir: <?= $penjualan['username']; ?></p>
+    <div class="container">
+        <h2>🧾 Struk Pembelian</h2>
 
-<?php if ($member_id): ?>
-<p>Poin didapat: <?= $poin_didapat; ?></p>
-<p>Total poin sekarang: <?= $poin_sekarang; ?></p>
-<?php endif; ?>
+        <div class="card">
+            <p><strong>No Transaksi:</strong> <?= $penjualan['penjualan_id']; ?></p>
+            <p><strong>Tanggal:</strong> <?= $penjualan['tanggal']; ?></p>
+            <p><strong>Kasir:</strong> <?= $penjualan['username']; ?></p>
 
-<hr>
-<table border="1" cellpadding="5">
-    <tr>
-        <th>Produk</th>
-        <th>Harga</th>
-        <th>Jumlah</th>
-        <th>Subtotal</th>
-    </tr>
-    <?php while ($row = $detail->fetch_assoc()): ?>
-    <tr>
-        <td><?= $row['nama_produk']; ?></td>
-        <td><?= $row['harga']; ?></td>
-        <td><?= $row['jumlah']; ?></td>
-        <td><?= $row['subtotal']; ?></td>
-    </tr>
-    <?php endwhile; ?>
-</table>
-<hr>
-<h3>Total: Rp <?= number_format($penjualan['total_harga'], 0, ',', '.'); ?></h3>
+            <?php if ($member_id): ?>
+                <p><strong>Poin didapat:</strong> <?= $poin_didapat; ?></p>
+                <p><strong>Total poin sekarang:</strong> <?= $poin_sekarang; ?></p>
+            <?php endif; ?>
+        </div>
 
-<br>
-<button onclick="window.print()" class="no-print">🖨 Cetak Struk</button>
-<a href="penjualan.php" class="no-print">🔙 Transaksi Baru</a>
-<br>
-<a href="dashboard.php" class="no-print">⬅️ Kembali ke Dashboard</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produk</th>
+                    <th>Harga</th>
+                    <th>Jumlah</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while ($row = $detail->fetch_assoc()): ?>
+                <tr>
+                    <td><?= $row['nama_produk']; ?></td>
+                    <td>Rp <?= number_format($row['harga'], 0, ',', '.'); ?></td>
+                    <td><?= $row['jumlah']; ?></td>
+                    <td>Rp <?= number_format($row['subtotal'], 0, ',', '.'); ?></td>
+                </tr>
+                <?php endwhile; ?>
+            </tbody>
+        </table>
+
+        <h3>Total: Rp <?= number_format($penjualan['total_harga'], 0, ',', '.'); ?></h3>
+
+        <div class="actions no-print">
+    <button onclick="window.print()">🖨 Cetak Struk</button>
+    <br>
+    <br>
+    <a href="penjualan.php" class="btn primary">🔄 Transaksi Baru</a>
+    <br>
+    <br>
+    <a href="dashboard.php" class="btn secondary">⬅️ Kembali ke Dashboard</a>
+</div>
+
+    </div>
 
 </body>
 </html>

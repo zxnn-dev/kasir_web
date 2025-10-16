@@ -12,6 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 <!DOCTYPE html>
 <html>
 <head>
+     <link rel="stylesheet" href="../assets/style.css">
     <title>Daftar Member</title>
     <style>
         table {

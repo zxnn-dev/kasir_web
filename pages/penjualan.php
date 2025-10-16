@@ -48,38 +48,62 @@ if (isset($_POST['checkout'])) {
 }
 ?>
 
-<h2>Transaksi Penjualan</h2>
-<form method="POST">
-    <label for="member_id">ID Member (opsional):</label>
-    
-    <input type="text" name="member_id" id="member_id" placeholder="Masukkan ID Member">
-    <br><br>
-   <a href="tambah_member.php">belum punya member?</a>
-    <br><br>
-    <table border="1" cellpadding="5">
-        <tr>
-            <th>Produk</th>
-            <th>Harga</th>
-            <th>Stok</th>
-            <th>Jumlah Beli</th>
-        </tr>
-        <?php
-        $result = $conn->query("SELECT * FROM produk WHERE stok > 0");
-        while ($row = $result->fetch_assoc()) {
-            echo "<tr>
-                <td>".$row['nama_produk']."</td>
-                <td>".$row['harga']."</td>
-                <td>".$row['stok']."</td>
-                <td>
-                    <input type='hidden' name='produk_id[]' value='".$row['produk_id']."'>
-                    <input type='number' name='jumlah[]' min='0' max='".$row['stok']."' value='0'>
-                </td>
-            </tr>";
-        }
-        ?>
-    </table>
-    <br>
-    <button type="submit" name="checkout">Checkout</button>
-</form>
-<br>
-<a href="dashboard.php">⬅️ Kembali ke Dashboard</a>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transaksi Penjualan</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="navbar">
+  <h1>Aplikasi Kasir</h1>
+</div>
+
+<div class="content">
+  <h2>Transaksi Penjualan</h2>
+
+  <form method="POST" class="form-box">
+      <label for="member_id">ID Member (opsional):</label>
+      <input type="text" name="member_id" id="member_id" placeholder="Masukkan ID Member">
+      <br>
+      <a href="tambah_member.php" class="link">Belum punya member?</a>
+      <br><br>
+
+      <table class="data-table">
+          <tr>
+              <th>Produk</th>
+              <th>Harga</th>
+              <th>Stok</th>
+              <th>Jumlah Beli</th>
+          </tr>
+          <?php
+          $result = $conn->query("SELECT * FROM produk WHERE stok > 0");
+          while ($row = $result->fetch_assoc()) {
+              echo "<tr>
+                  <td>".$row['nama_produk']."</td>
+                  <td>".$row['harga']."</td>
+                  <td>".$row['stok']."</td>
+                  <td>
+                      <input type='hidden' name='produk_id[]' value='".$row['produk_id']."'>
+                      <input type='number' name='jumlah[]' min='0' max='".$row['stok']."' value='0'>
+                  </td>
+              </tr>";
+          }
+          ?>
+      </table>
+      <br>
+      <button type="submit" name="checkout" class="btn-primary">Checkout</button>
+  </form>
+
+  <br>
+  <div class="button-group">
+        <a href="dashboard.php" class="btn secondary">⬅️ Kembali ke Dashboard</a>
+
+    </div>
+</div>
+
+</body>
+</html>
