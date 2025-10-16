@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2025 at 03:10 PM
+-- Generation Time: Oct 16, 2025 at 06:55 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,7 +42,8 @@ CREATE TABLE `detail_pembelian` (
 INSERT INTO `detail_pembelian` (`detail_id`, `pembelian_id`, `produk_id`, `jumlah`, `harga`) VALUES
 (1, 1, 2, 22, 2000.00),
 (2, 2, 6, 100, 1500.00),
-(3, 3, 9, 12, 5000.00);
+(3, 3, 9, 12, 5000.00),
+(4, 4, 10, 100, 1900.00);
 
 -- --------------------------------------------------------
 
@@ -109,7 +110,39 @@ INSERT INTO `detail_penjualan` (`detail_id`, `penjualan_id`, `produk_id`, `jumla
 (44, 17, 2, 5, 25000.00),
 (45, 18, 1, 3, 10500.00),
 (46, 18, 2, 12, 60000.00),
-(47, 19, 2, 2, 10000.00);
+(47, 19, 2, 2, 10000.00),
+(48, 20, 1, 10, 35000.00),
+(49, 20, 2, 10, 50000.00),
+(50, 21, 9, 1, 4000.00),
+(51, 24, 1, 12, 42000.00),
+(52, 24, 2, 12, 60000.00),
+(53, 24, 3, 12, 84000.00),
+(54, 24, 4, 12, 360000.00),
+(55, 24, 5, 12, 24000.00),
+(56, 24, 6, 12, 24000.00),
+(57, 24, 7, 12, 420000.00),
+(58, 24, 9, 1, 4000.00),
+(59, 24, 10, 12, 24000.00),
+(60, 26, 10, 20, 40000.00),
+(61, 27, 1, 10, 35000.00),
+(62, 27, 2, 10, 50000.00),
+(63, 27, 3, 5, 35000.00),
+(64, 27, 4, 10, 300000.00),
+(65, 27, 5, 10, 20000.00),
+(66, 27, 6, 10, 20000.00),
+(67, 27, 7, 10, 350000.00),
+(68, 27, 10, 10, 20000.00),
+(69, 28, 1, 4, 14000.00),
+(70, 35, 1, 6, 21000.00),
+(71, 35, 2, 1, 5000.00),
+(72, 35, 3, 1, 7000.00),
+(73, 35, 4, 15, 450000.00),
+(74, 35, 5, 20, 40000.00),
+(75, 35, 6, 30, 60000.00),
+(76, 35, 7, 20, 700000.00),
+(77, 35, 9, 1, 4000.00),
+(78, 35, 10, 20, 40000.00),
+(79, 35, 11, 10, 50000.00);
 
 -- --------------------------------------------------------
 
@@ -132,9 +165,11 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`member_id`, `nama`, `nik`, `no_hp`, `email`, `alamat`, `poin`) VALUES
-('MBR0001', 'zxx', '12345', '122333', 'a@gmail.com', 'aaaa', 1),
-('MBR0002', 'zxx', '12345', '122333', 'a@gmail.com', 'aaaa', 0),
-('MBR0003', 'w', 'w', 'w', 'a@gmail.com', 'w', 0);
+('MBR0001', 'zxx', '12345', '122333', 'a@gmail.com', 'aaaa', 2),
+('MBR0002', 'zxx', '12345', '122333', 'a@gmail.com', 'aaaa', 8),
+('MBR0003', 'w', 'w', 'w', 'a@gmail.com', 'w', 0),
+('MBR0004', 'ayu', '1231231231234', '0t81212312312', 'ayu@gmail.com', 'cilodong', 141),
+('MBR0005', 'arsitya', '12121212121212', '08212121212121', 'arsitya@gmail.com', 'bojong', 0);
 
 -- --------------------------------------------------------
 
@@ -156,7 +191,8 @@ CREATE TABLE `pembelian` (
 INSERT INTO `pembelian` (`pembelian_id`, `user_id`, `tanggal`, `total_harga`) VALUES
 (1, 1, '2025-09-10 09:02:05', 44000.00),
 (2, 1, '2025-09-10 09:04:16', 150000.00),
-(3, 11, '2025-09-30 13:52:41', 60000.00);
+(3, 11, '2025-09-30 13:52:41', 60000.00),
+(4, 16, '2025-10-01 06:56:30', 190000.00);
 
 -- --------------------------------------------------------
 
@@ -194,7 +230,23 @@ INSERT INTO `penjualan` (`penjualan_id`, `user_id`, `tanggal`, `total_harga`) VA
 (16, 13, '2025-09-30 13:51:37', 18500.00),
 (17, 13, '2025-09-30 13:54:24', 39000.00),
 (18, 13, '2025-09-30 13:54:39', 70500.00),
-(19, 13, '2025-09-30 14:02:17', 10000.00);
+(19, 13, '2025-09-30 14:02:17', 10000.00),
+(20, 16, '2025-10-01 01:55:21', 85000.00),
+(21, 16, '2025-10-01 01:55:39', 4000.00),
+(22, 16, '2025-10-01 03:37:05', 0.00),
+(23, 16, '2025-10-01 03:40:15', 0.00),
+(24, 16, '2025-10-01 03:43:12', 1042000.00),
+(25, 16, '2025-10-01 03:44:26', 0.00),
+(26, 16, '2025-10-01 03:45:21', 40000.00),
+(27, 30, '2025-10-01 03:49:34', 830000.00),
+(28, 16, '2025-10-16 03:48:36', 14000.00),
+(29, 16, '2025-10-16 04:30:21', 0.00),
+(30, 16, '2025-10-16 04:31:25', 0.00),
+(31, 16, '2025-10-16 04:31:49', 0.00),
+(32, 16, '2025-10-16 04:40:55', 0.00),
+(33, 16, '2025-10-16 04:43:03', 0.00),
+(34, 16, '2025-10-16 04:43:35', 0.00),
+(35, 16, '2025-10-16 06:16:56', 1377000.00);
 
 -- --------------------------------------------------------
 
@@ -214,15 +266,17 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`produk_id`, `nama_produk`, `harga`, `stok`) VALUES
-(1, 'Indomie Goreng', 3500.00, 73),
-(2, 'Teh Botol Sosro', 5000.00, 36),
-(3, 'Roti Coklat', 7000.00, 20),
-(4, 'beras', 30000.00, 89),
-(5, 'susu', 2000.00, 92),
-(6, 'gelas', 2000.00, 92),
-(7, '1', 35000.00, 88),
+(1, 'Indomie Goreng', 3500.00, 31),
+(2, 'Teh Botol Sosro', 5000.00, 3),
+(3, 'Roti Coklat', 7000.00, 2),
+(4, 'beras', 30000.00, 52),
+(5, 'susu', 2000.00, 50),
+(6, 'gelas', 2000.00, 40),
+(7, '1', 35000.00, 46),
 (8, '1', 2000.00, 0),
-(9, 'teh', 4000.00, 4);
+(9, 'teh', 4000.00, 1),
+(10, 'ROTI TAWAR', 2000.00, 38),
+(11, 'aqua', 5000.00, 10);
 
 -- --------------------------------------------------------
 
@@ -232,12 +286,12 @@ INSERT INTO `produk` (`produk_id`, `nama_produk`, `harga`, `stok`) VALUES
 
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
-  `nik` int(20) DEFAULT NULL,
+  `nik` varchar(20) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `poin` int(11) DEFAULT 0,
-  `role` enum('admin','petugas') NOT NULL
+  `role` enum('admin','kasir') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -245,11 +299,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `nik`, `email`, `username`, `password`, `poin`, `role`) VALUES
-(10, 1, 'zzz@gmail.com', 'z', '202cb962ac59075b964b07152d234b70', 0, ''),
-(11, 2147483647, 'a@gmail.com', 'admin1', '81dc9bdb52d04dc20036dbd8313ed055', 0, 'admin'),
-(13, 112, '1@gmail.com', 'admin', '202cb962ac59075b964b07152d234b70', 8, 'admin'),
-(16, 1234567890, 'admin@example.com', 'adminn', '$2y$10$EgQ1PJIeV6w9Ut3B.acaH.TOu0SrRbe3O/e82UEvzAaCpjdkyp/2S', 0, 'admin'),
-(19, 12223, 'w@gmail.com', 'zhafran', '$2y$10$1HGUhiC//AGflK1omLlHCOfLBBbdv9yaXA4jHpGqwmHTIpFfwZjWq', 0, '');
+(11, '2147483647', 'a@gmail.com', 'admin1', '81dc9bdb52d04dc20036dbd8313ed055', 0, 'admin'),
+(13, '112', '1@gmail.com', 'admin', '202cb962ac59075b964b07152d234b70', 8, 'admin'),
+(16, '1234567890', 'admin@example.com', 'adminn', '$2y$10$EgQ1PJIeV6w9Ut3B.acaH.TOu0SrRbe3O/e82UEvzAaCpjdkyp/2S', 0, 'admin'),
+(30, '123412341234', 'ayu@gmail.com', 'ayu', '$2y$10$zcJ7L9LuBMiynjvM56eZW.FMdFeNEQh1DblAde132PeMsBGovSz5W', 0, 'kasir'),
+(31, '1223113334', 'zzz@gmail.com', 'z', '$2y$10$q2HTM/xo3hIq2UUV6K3Z/ep9ZRegCI3Jza.a0p2RJe2zUGWKHP3AG', 0, 'kasir');
 
 --
 -- Indexes for dumped tables
@@ -314,37 +368,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `detail_pembelian`
 --
 ALTER TABLE `detail_pembelian`
-  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `detail_penjualan`
 --
 ALTER TABLE `detail_penjualan`
-  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT for table `pembelian`
 --
 ALTER TABLE `pembelian`
-  MODIFY `pembelian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `pembelian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `penjualan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `penjualan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `produk_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `produk_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Constraints for dumped tables
